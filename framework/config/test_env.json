@@ -1,0 +1,11 @@
+
+{
+
+  "CONFIG_PATH" : {
+    "DEPENDENCY" : {
+      "FRAMEWORK" : "framework/config/TestDependencies.json"
+    }
+  },
+  "ERROR_HANDLER" : "framework/config/custom_error_handler.php"
+
+}

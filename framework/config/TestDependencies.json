@@ -1,0 +1,119 @@
+{
+  "example\\Fully\\Qualified\\Namespace\\Object" : {
+    "EXTENDS": "example\\parent\\class",
+    "DEPENDENCY" : {
+      "param1": {
+        "VALUE" : "\\fully\\qualified\\namespace"
+      },
+      "param2" : {
+        "TYPE" : "BOOL / INT / STR",
+        "VALUE" : {
+          "SERVER_KEY" : null,
+          "REQUEST_KEY" : null,
+          "OBJECT_METHOD" : {
+            "OBJECT" : "\\fully\\qualified\\namespace",
+            "METHOD" : "exampleMethod"
+          },
+          "DEFAULT" : false
+        }
+      }
+    },
+    "SINGLETON" : false
+  },
+
+  "model\\testClasses\\ObjectWithBasicObjectDependency" : {
+    "DEPENDENCY" : {
+      "BasicObject" : {
+        "VALUE" : "model\\testClasses\\BasicObject"
+      }
+    }
+  },
+  "model\\testClasses\\ObjectWithRequestStringDependency" : {
+    "DEPENDENCY" : {
+      "requestString" : {
+        "TYPE" : "STR",
+        "VALUE" : {
+          "REQUEST_KEY" : "url_string_variable"
+        },
+        "DEFAULT": "default_string"
+      }
+    }
+  },
+  "model\\container\\WebContainer" : {
+    "SINGLETON": true,
+    "DEPENDENCY" : {
+      "WebRequestObject" : {
+        "VALUE" : "model\\request\\HttpGetRequestObject"
+      },"WebResponseObject" : {
+        "VALUE" : "model\\response\\WebResponseObject"
+      },"DBO" : {
+        "VALUE" : "model\\datasource\\DBPdo"
+      },"Authenticator" : {
+        "VALUE" : "model\\authenticator\\AuthenticatorWeb"
+      },"SessionManager" : {
+        "VALUE" : "model\\stateManager\\SessionManager"
+      },"CookieManager" : {
+        "VALUE" : "model\\stateManager\\CookieManager"
+      },"DependencyManager" : {
+        "VALUE" : "model\\dependencyManager\\WebDependencyManager"
+      }
+    }
+  },
+  "model\\authenticator\\AuthenticatorWeb" : {
+    "SINGLETON": true,
+    "DEPENDENCY" : {
+      "SessionManager" : {
+        "VALUE" : "model\\stateManager\\SessionManager"
+      },"CookieManager" : {
+
+        "VALUE" : "model\\stateManager\\CookieManager"
+      }
+    }
+  },
+  "model\\stateManager\\CookieManager" : {
+    "SINGLETON" : true,
+    "DEPENDENCY" : {
+
+    }
+  },
+  "model\\stateManager\\SessionManager" : {
+    "SINGLETON" : true,
+    "DEPENDENCY" : {
+
+    }
+  },
+  "model\\dependencyManager\\WebDependencyManager" : {
+    "SINGLETON" : true,
+    "DEPENDENCY" : {
+      "JsonConfig" : {
+        "VALUE" : "model\\object\\config\\JsonConfigObject"
+      }
+    }
+  },
+  "model\\object\\config\\JsonConfigObject" : {
+    "DEPENDENCY" : {
+      "JsonFileReader" : {
+        "VALUE" : "model\\fileReader\\JsonFileReader"
+      }
+    }
+  },
+
+  "model\\fileReader\\JsonFileReader" : {
+    "DEPENDENCY" : {
+      "FilePathFinder" : {
+        "VALUE" : "abstractClass\\AbstractFinder\\FilePathFinder"
+      }
+    }
+  },
+  "abstractClass\\AbstractFinder\\FilePathFinder" : {
+    "DEPENDENCY" : {
+      "requestString" : {
+        "TYPE" : "STR",
+        "VALUE" : {
+          "STR" : "framework/config/env.json"
+        },
+        "DEFAULT": "framework/config/env.json"
+      }
+    }
+  }
+}

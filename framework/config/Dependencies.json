@@ -1,0 +1,179 @@
+{
+  "example\\Fully\\Qualified\\Namespace\\Object" : {
+    "EXTENDS": "example\\parent\\class",
+    "DEPENDENCY" : {
+      "param1": {
+        "TYPE":"OBJECT",
+        "VALUE" : "\\fully\\qualified\\namespace"
+      },
+      "param2" : {
+        "TYPE" : "BOOL / INT / STR",
+        "VALUE" : {
+          "SERVER_KEY" : null,
+          "REQUEST_KEY" : null,
+          "OBJECT_METHOD" : {
+            "OBJECT" : "\\fully\\qualified\\namespace",
+            "METHOD" : "exampleMethod"
+          },
+          "DEPENDENCY":"dependencyName",
+          "DEFAULT" : false
+        }
+      }
+    },
+    "SINGLETON" : false
+  },
+
+  "AbstractClass\\AbstractController" : {
+    "SINGLETON": true,
+    "DEPENDENCY": {
+      "persistentStateContainer" : {
+        "TYPE": "OBJECT",
+        "VALUE": "container"
+      },
+      "requestActionType" : {
+          "TYPE":"STR",
+          "VALUE": {
+              "DEPENDENCY":"requestAction"
+          },
+          "DEFAULT":"get"
+      }
+    }
+  },
+  "AbstractClass\\AbstractWebController" : {
+    "SINGLETON": true,
+    "EXTENDS": "AbstractClass\\AbstractController"
+  },
+  "AbstractClass\\AbstractApiController" : {
+    "SINGLETON": true,
+    "EXTENDS": "AbstractClass\\AbstractController"
+  },
+  "AbstractClass\\AbstractFrontController" : {
+    "SINGLETON": true,
+    "DEPENDENCY": {
+      "persistentStateContainer" : {
+        "TYPE": "OBJECT",
+        "VALUE": "container"
+      },
+      "routeFinderService": {
+        "TYPE": "OBJECT",
+        "VALUE": "routeFinderService"
+      }
+    }
+  },
+
+  "frontController\\WebFrontController" : {
+    "CONTROLLER" : true,
+    "EXTENDS": "AbstractClass\\AbstractFrontController"
+  }
+,"frontController\\ApiFrontController" : {
+    "CONTROLLER" : true,
+    "EXTENDS": "AbstractClass\\AbstractFrontController"
+  },
+  "model\\stateManager\\CookieManager" : {
+    "SINGLETON" : true,
+    "DEPENDENCY" : {
+
+    }
+  },
+  "model\\stateManager\\SessionManager" : {
+    "SINGLETON" : true,
+    "DEPENDENCY" : {
+
+    }
+  },
+
+  "request": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"request"
+  },
+  "response": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"response"
+  },
+  "datasource": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"datasource"
+  },
+"authenticator": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"authenticator"
+  },
+  "dependencyManager": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"dependencyManager"
+  },
+  "container": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"container"
+  },
+  "routeFinderService": {
+    "SINGLETON":true,
+    "TYPE":"OBJECT",
+    "VALUE":"routeFinderService"
+  },
+
+  "AbstractClass\\AbstractHTTPContainer" : {
+    "SINGLETON": true,
+    "DEPENDENCY" : {
+      "RequestObject" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "request"
+      },"ResponseObject" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "response"
+      },"DBO" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "datasource"
+      },"Authenticator" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "authenticator"
+      },"DependencyManager" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "dependencyManager"
+      }
+    }
+  },
+
+  "model\\container\\WebContainer" : {
+    "SINGLETON":true,
+    "EXTENDS":"AbstractClass\\AbstractHTTPContainer",
+    "DEPENDENCY" : {
+      "SessionManager" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "model\\stateManager\\SessionManager"
+      },"CookieManager" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "model\\stateManager\\CookieManager"
+      }
+    }
+  },
+
+  "model\\container\\ApiContainer" : {
+    "SINGLETON":true,
+    "EXTENDS":"AbstractClass\\AbstractHTTPContainer"
+  },
+
+  "model\\authenticator\\AuthenticatorWeb" : {
+    "SINGLETON": true,
+    "DEPENDENCY" : {
+      "SessionManager" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "model\\stateManager\\SessionManager"
+      },"CookieManager" : {
+        "TYPE" : "OBJECT",
+        "VALUE" : "model\\stateManager\\CookieManager"
+      }
+    }
+  },
+  "model\\authenticator\\AuthenticatorApi" : {
+    "SINGLETON": true
+  }
+
+
+}
