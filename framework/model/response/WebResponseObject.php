@@ -26,7 +26,7 @@ class WebResponseObject extends AbstractHttpResponseObject {
         if (!isset($this->templateName)) {
             $this->response = addslashes(json_encode($this->responseData??[]));
         } else {
-            $this->templateParser->setTemplate($this->templateName, $this->responseData);
+            $this->templateParser->setTemplate($this->templateName, $this->responseData??[]);
             $this->response = $this->templateParser->parseString();
         }
     }

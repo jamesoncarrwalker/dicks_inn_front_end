@@ -16,15 +16,18 @@ class LandingController extends AbstractWebController {
 
 
     public function get() {
-        $dbo = new DBPdo();
-        $this->setData('dbo', $dbo->openConnection());
-        $this->setData('message', 'Hello Fergo');
+        $this->setData('title','Welcome to the Quiz at the Dicks');
         $this->setTemplate('example');
     }
 
     public function post() {
         $this->setData("postRequest",true);
         $this->setData("postData", $this->getAllRequestData());
+    }
+
+    public function dash() {
+
+        $this->setTemplate('dashboard');
     }
 
 }

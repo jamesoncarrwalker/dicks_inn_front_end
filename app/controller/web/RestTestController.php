@@ -31,6 +31,7 @@ class RestTestController extends AbstractWebController {
         $this->setData('Where','RestTestController');
         $this->setData('Method','GET');
         $this->setData('RequestMethod',$_SERVER['REQUEST_METHOD']);
+        $this->setTemplate('example');
     }
 
     public function post() {

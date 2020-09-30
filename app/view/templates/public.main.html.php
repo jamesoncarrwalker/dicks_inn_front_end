@@ -3,15 +3,19 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="test.css" />
+    [[ section::partials/head/metaTags ]]
+    [[ section::partials/head/commonHeadLinks ]]
     <title>[[ title ]]</title>
 </head>
 
 <body>
-
-[[section::mainContent]]
-
+    <div id="app" class="container-fluid">
+        [[section::mainContent]]
+    </div>
 </body>
 
+<script src="js/app_public.js"></script>
+
+    [[ section::partials/scripts/commonScripts ]]
 
 </html>

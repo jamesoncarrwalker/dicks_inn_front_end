@@ -15,5 +15,6 @@ class LostController extends AbstractWebController {
 
     public function get() {
         $this->setData('message', 'this is the lost controller');
+        $this->setTemplate('dashboard');
     }
 }
