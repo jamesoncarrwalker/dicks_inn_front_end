@@ -1,7 +1,9 @@
 // webpack.config.js
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
 
 module.exports = env => {
+    const DE = require('dotenv').config({path: (env.NODE_ENV == 'production' ? './.env' : './.env.local')}).parsed;
     return {
         entry: {
             app_private: './app/resources/js/app_private.js',
@@ -37,13 +39,18 @@ module.exports = env => {
         },
         resolve: {
             alias: {
-                //vue: 'vue/dist/vue.js'
                 vue: env.NODE_ENV == 'production' ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
             }
         },
         plugins: [
             // make sure to include the plugin for the magic
-            new VueLoaderPlugin()
+            new VueLoaderPlugin(),
+            //app_env_obj
+            new webpack.DefinePlugin({
+                'appEnv': JSON.stringify(DE)
+            })
+
+
         ]
     }
 

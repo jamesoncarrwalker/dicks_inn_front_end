@@ -1,8 +1,6 @@
 <template>
-    <button :class="['text-center']"
-            :type="type">
-        {{ title }}
-    </button>
+
+    <router-link :type="navType" role="button" :to="{name: destination}" :class="['text-center','btn', 'btn-default', 'btn-dicks']" exact>{{ title }}</router-link>
 
 </template>
 
@@ -26,8 +24,11 @@
                 type:String,
                 required:true
             },
-            type: String,
-            default: 'button'
+            navType: {
+                type: String,
+                default: 'button',
+            },
+
         },
 
         methods: {

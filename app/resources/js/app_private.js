@@ -1,24 +1,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
-import routes from './routes';
+import routes from './routes_private';
 import store_shared from './shared/store/store';
 import store_private from './private/store/store_private';
 
 
 
+//globally register the common components
+import './global_register';
+
 Vue.use(require('vue-moment'));
 Vue.use(Vuex);
 Vue.use(VueRouter);
-const modules = {...store_private.modules, ...store_shared.modules};
 
-const store = new Vuex.Store({
+const store = new Vuex.Store({...store_private.modules, ...store_shared.modules});
 
-    modules: {
-        ...modules
-    }
-
-});
 
 const app = new Vue({
 
