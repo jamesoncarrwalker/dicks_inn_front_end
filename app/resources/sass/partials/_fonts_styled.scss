@@ -2,6 +2,19 @@
   font: $handWritten;
   color: $colorBlackMain;
   text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
+}
 
+.dicks-heading {
+  font: $dicksHeading;
+  & .heading-s {
 
+  }
+
+  &.heading-m {
+    font-size: 22px !important;
+  }
+
+  &.heading-l {
+    font-size: 28px !important;
+  }
 }

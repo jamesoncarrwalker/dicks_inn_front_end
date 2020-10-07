@@ -1,6 +1,6 @@
 <template>
 
-    <router-link :type="navType" role="button" :to="{name: destination}" :class="['text-center','btn', 'btn-default', 'btn-dicks']" exact>{{ title }}</router-link>
+    <router-link :type="navType" role="button" :to="{name: destination}" :class="['text-center', 'btn-dicks']" exact>{{ title }}</router-link>
 
 </template>
 

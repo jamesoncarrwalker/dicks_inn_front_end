@@ -16,19 +16,13 @@ const base = appEnv.BASE_URL;
 export default {
 
     mode:'history',
-    linkActiveClass: 'strong',
+    linkActiveClass: 'active-link',
 
     routes: [
         {
             path: base + '/',
-            component: Landing,
-            name: 'landing'
-        }
-        ,{
-            path:base + 'sign-in',
             component: SignIn,
             name: 'sign-in'
-
         }
         ,{
             path: base + 'register',

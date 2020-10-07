@@ -1,6 +1,62 @@
 <template>
     <div class="container-fluid">
-        <h2>Welcome.vue</h2>
+
+        <splash-banner classes="max-300"></splash-banner>
+
+        <div class="row" >
+
+            <full-width-col classes="text-center hand-written">
+
+                <h2 v-text="'Sometimes you wanna go...'"></h2>
+
+            </full-width-col>
+
+            <full-width-col class="text-center">
+
+                <form class="form-inline">
+
+                    <full-width-col>
+
+                        <half-width-col >
+
+                            <label class="pull-right" for="username_input">Username</label>
+
+                        </half-width-col>
+
+                        <half-width-col class="pull-left">
+
+                            <label class="pull-left" for="password_input">Password</label>
+
+                        </half-width-col>
+
+                    </full-width-col>
+
+                    <full-width-col>
+
+                        <half-width-col >
+
+                            <form-input class="pull-right" input-name="username" input-type="text" id="username_input"></form-input>
+
+                        </half-width-col>
+
+                        <half-width-col class="pull-right">
+
+                            <form-input class="pull-left" input-name="password" input-type="password" id="password_input"></form-input>
+
+                        </half-width-col>
+
+                    </full-width-col>
+
+
+
+
+                </form>
+
+
+            </full-width-col>
+
+        </div>
+
     </div>
 
 </template>
