@@ -1,6 +1,4 @@
 [[ extends::public ]]
 
-[[ section::partials/publicHeader ]]
 
-
-<router-view></router-view>
+<public-splash></public-splash>

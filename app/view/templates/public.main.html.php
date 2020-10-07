@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="app" class="container-fluid">
+    <div id="app">
         [[section::mainContent]]
     </div>
 </body>
