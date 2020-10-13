@@ -11,7 +11,7 @@ import SignIn from './public/pages/SignIn.vue';
 import Register from './public/pages/Register.vue';
 import Guest from './public/pages/Guest.vue';
 
-const base = appEnv.BASE_URL;
+const base = env.BASE_URL;
 
 export default {
 

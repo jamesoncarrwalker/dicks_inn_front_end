@@ -47,7 +47,7 @@ module.exports = env => {
             new VueLoaderPlugin(),
             //app_env_obj
             new webpack.DefinePlugin({
-                'appEnv': JSON.stringify(DE)
+                'env': JSON.stringify(DE)
             })
 
 
