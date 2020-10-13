@@ -1,7 +1,14 @@
 <template>
     <div :class="formGroup">
         <label v-if="inputLabel != ''" :for="getInputId">{{ inputLabel }}</label>
-        <input class="form-control" :type="inputType" :class="inputClasses" :name="inputName" :id="getInputId" :autocomplete="autoComplete" />
+        <input class="form-control"
+               :type="inputType"
+               :class="inputClasses"
+               :name="inputName"
+               :id="getInputId"
+               :autocomplete="autoComplete"
+               v-model="inputValue"
+               @keyup="$emit('update:inputValue', inputValue);" />
     </div>
 
 </template>
@@ -10,7 +17,11 @@
 
 
     export default {
-
+        data() {
+          return{
+              inputValue:''
+          }
+        },
         components: {
 
         },

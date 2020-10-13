@@ -35,20 +35,27 @@
 
                         <half-width-col >
 
-                            <form-input class="pull-right" input-name="username" input-type="text" id="username_input"></form-input>
+                            <form-input :inputValue.sync="usernameValue" class="pull-right" input-name="username" input-type="text" id="username_input"></form-input>
 
                         </half-width-col>
 
                         <half-width-col class="pull-right">
 
-                            <form-input class="pull-left" input-name="password" input-type="password" id="password_input"></form-input>
+                            <form-input :inputValue.sync="passwordValue" class="pull-left" input-name="password" input-type="password" id="password_input"></form-input>
 
                         </half-width-col>
 
                     </full-width-col>
 
+                    <full-width-col class="text-center">
 
+                        <submit-button
+                                :title="'Sign in'"
+                                v-on:click="login"
+                                :buttonActive="buttonActive"
+                        ></submit-button>
 
+                    </full-width-col>
 
                 </form>
 
@@ -74,11 +81,22 @@
         },
 
         methods: {
-
+            login: function (event) {event.preventDefault();console.log('trying loggin in now....');}
+        },
+        data() {
+            return {
+                loginEndpoint: env.API_URL + '/login',
+                passwordValue:'',
+                usernameValue: ''
+            };
         },
         computed: {
+            buttonActive() {
+                return this.passwordValue.length >= env.MINIMUM_PASSWORD_LENGTH
+                        && this.usernameValue.length >= env.MINIMUM_USERNAME_LENGTH
+                            }
 
-        }
+        },
 
     };
 </script>
