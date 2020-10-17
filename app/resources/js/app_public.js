@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import routes from './routes_public';
 import store_shared from './shared/store/store';
 import store_public from './public/store/store_public';
+import axios from 'axios'
 
 //globally register the common components
 import './global_register';
@@ -11,6 +12,7 @@ import './global_register';
 Vue.use(require('vue-moment'));
 Vue.use(Vuex);
 Vue.use(VueRouter);
+Vue.prototype.$axios = axios;
 
 const store = new Vuex.Store({...store_public.modules, ...store_shared.modules});
 

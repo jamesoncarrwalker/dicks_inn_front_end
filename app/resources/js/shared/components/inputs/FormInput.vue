@@ -8,7 +8,9 @@
                :id="getInputId"
                :autocomplete="autoComplete"
                v-model="inputValue"
-               @keyup="$emit('update:inputValue', inputValue);" />
+               @keyup="$emit('update:inputValue', inputValue);"
+               :placeholder="placeHolder"
+        />
     </div>
 
 </template>
@@ -54,6 +56,10 @@
             autoComplete: {
                 type: Boolean,
                 default:true
+            },
+            placeHolder: {
+                type: String,
+                default: 'e.g. Lorem ipsum dorem latet'
             }
         },
 
